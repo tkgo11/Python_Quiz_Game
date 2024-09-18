@@ -3,8 +3,7 @@ import random
 quiz_data = [
     {
         "question": "What does HTML stand for?",
-        "options": ["A. Hyperlink Text Markup Language", "B. Hyper Transfer Markup Language", "C. Hypertext Markup Language", "D. High-Level Text Markup Language"],
-        "answer": "C"
+        "answer": "Hypertext Markup Language"
     },
     {
         "question": "Which programming language is often used for web development?",
@@ -97,12 +96,25 @@ quiz_data = [
         "answer": "C"
     }
 ]
+def clear():
+    try:
+        os.system('cls' if os.name == 'nt' else "printf '\033c'")
+    except:
+        os.system('clear')
+def pause():
+    try:
+        os.system('pause')
+    except:
+        input("Press any key to continue . . . ")
 #displaying content
 def ask_question(question_data):
     print(question_data["question"])
-    for option in question_data["options"]:
-        print(option)
-    user_answer = input("Enter your answer (A,B,C,D): ").upper()
+    if "options" in question_data:
+        for option in question_data["options"]:
+            print(option)
+        user_answer = input("Enter your answer (A,B,C,D): ").upper()
+    else:
+        user_answer = input("Enter your answer: ")
     if user_answer == question_data["answer"]:
         return True
     else:
@@ -112,11 +124,12 @@ if __name__=="__main__":
     score=0
     random.shuffle(quiz_data)
     for i in range(1,6):
+        clear()
         print(f'Question {i} of 5')
         if ask_question(quiz_data[i]):
             print("Correct!\n")
             score += 1
         else:
             print(f"Wrong! The correct answer is {quiz_data[i]['answer']}.\n")
-
+        pause()
     print(f"You scored {score}/5.")
