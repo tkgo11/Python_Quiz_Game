@@ -97,15 +97,12 @@ quiz_data = [
     }
 ]
 def clear():
-    try:
-        os.system('cls' if os.name == 'nt' else "printf '\033c'")
-    except:
-        os.system('clear')
+    os.system('cls' if os.name == 'nt' else "clear")
 def pause():
     try:
         os.system('pause')
     except:
-        input("Press any key to continue . . . ")
+        input("계속하려면 아무 키나 누르십시오 . . . ")
 #displaying content
 def ask_question(question_data):
     print(question_data["question"])
