@@ -1,4 +1,6 @@
 import random
+import sys
+import os
 #Question to be asked
 quiz_data = [
     {
@@ -103,6 +105,8 @@ def pause():
         os.system('pause')
     except:
         input("계속하려면 아무 키나 누르십시오 . . . ")
+    sys.stdout.write('\x1b[1A')
+    sys.stdout.write('\x1b[2K')
 #displaying content
 def ask_question(question_data):
     print(question_data["question"])
